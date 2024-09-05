@@ -66,7 +66,7 @@ function provisioning_start() {
     provisioning_get_pip_packages
     provisioning_get_extensions
     provisioning_get_models \
-        "${WORKSPACE}stable-diffusion-webui-forge/models/stable-diffusion/" \
+        "${WORKSPACE}stable-diffusion-webui-forge/models/Stable-diffusion/" \
         "${CHECKPOINT_MODELS[@]}"
     provisioning_get_models \
         "${WORKSPACE}stable-diffusion-webui-forge/models/lora/" \
