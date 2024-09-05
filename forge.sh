@@ -27,7 +27,7 @@ EXTENSIONS=(
 
 CHECKPOINT_MODELS=(
     "https://civitai.com/api/download/models/708635"
-	  "https://civitai.com/api/download/models/450105"
+    "https://civitai.com/api/download/models/450105"
 )
 
 LORA_MODELS=(
@@ -36,7 +36,7 @@ LORA_MODELS=(
 
 VAE_MODELS=(
     "https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors"
-	  "https://civitai.com/api/download/models/506692"
+    "https://civitai.com/api/download/models/506692"
 )
 
 ESRGAN_MODELS=(
@@ -66,19 +66,19 @@ function provisioning_start() {
     provisioning_get_pip_packages
     provisioning_get_extensions
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/ckpt" \
+        "${WORKSPACE}/stable-diffusion-webui-forge/models/stable-diffusion/" \
         "${CHECKPOINT_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/lora" \
+        "${WORKSPACE}/stable-diffusion-webui-forge/models/lora/" \
         "${LORA_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/controlnet" \
+        "${WORKSPACE}/stable-diffusion-webui-forge/models/controlnet/" \
         "${CONTROLNET_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/vae" \
+        "${WORKSPACE}/stable-diffusion-webui-forge/models/vae/" \
         "${VAE_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
+        "${WORKSPACE}/stable-diffusion-webui-forge/models/" \
         "${ESRGAN_MODELS[@]}"
      
     PLATFORM_ARGS=""
@@ -118,7 +118,7 @@ function provisioning_get_pip_packages() {
 function provisioning_get_extensions() {
     for repo in "${EXTENSIONS[@]}"; do
         dir="${repo##*/}"
-        path="/opt/stable-diffusion-webui-forge/extensions/${dir}"
+        path="${WORKSPACE}/stable-diffusion-webui-forge/extensions/${dir}"
         if [[ -d $path ]]; then
             # Pull only if AUTO_UPDATE
             if [[ ${AUTO_UPDATE,,} == "true" ]]; then
