@@ -66,19 +66,19 @@ function provisioning_start() {
     provisioning_get_pip_packages
     provisioning_get_extensions
     provisioning_get_models \
-        "${WORKSPACE}/stable-diffusion-webui-forge/models/stable-diffusion/" \
+        "${WORKSPACE}stable-diffusion-webui-forge/models/stable-diffusion/" \
         "${CHECKPOINT_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/stable-diffusion-webui-forge/models/lora/" \
+        "${WORKSPACE}stable-diffusion-webui-forge/models/lora/" \
         "${LORA_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/stable-diffusion-webui-forge/models/controlnet/" \
+        "${WORKSPACE}stable-diffusion-webui-forge/models/controlnet/" \
         "${CONTROLNET_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/stable-diffusion-webui-forge/models/vae/" \
+        "${WORKSPACE}stable-diffusion-webui-forge/models/vae/" \
         "${VAE_MODELS[@]}"
     provisioning_get_models \
-        "${WORKSPACE}/stable-diffusion-webui-forge/models/" \
+        "${WORKSPACE}stable-diffusion-webui-forge/models/" \
         "${ESRGAN_MODELS[@]}"
      
     PLATFORM_ARGS=""
@@ -118,7 +118,7 @@ function provisioning_get_pip_packages() {
 function provisioning_get_extensions() {
     for repo in "${EXTENSIONS[@]}"; do
         dir="${repo##*/}"
-        path="${WORKSPACE}/stable-diffusion-webui-forge/extensions/${dir}"
+        path="${WORKSPACE}stable-diffusion-webui-forge/extensions/${dir}"
         if [[ -d $path ]]; then
             # Pull only if AUTO_UPDATE
             if [[ ${AUTO_UPDATE,,} == "true" ]]; then
