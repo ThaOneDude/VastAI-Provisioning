@@ -19,16 +19,16 @@ PIP_PACKAGES=(
 )
 
 EXTENSIONS=(
-    "https://github.com/adieyal/sd-dynamic-prompts"
-    "https://github.com/ototadana/sd-face-editor"
-    "https://github.com/AlUlkesh/stable-diffusion-webui-images-browser"
+    #"https://github.com/adieyal/sd-dynamic-prompts"
+    #"https://github.com/ototadana/sd-face-editor"
+    #"https://github.com/AlUlkesh/stable-diffusion-webui-images-browser"
     "https://github.com/BlafKing/sd-civitai-browser-plus"
-    "https://github.com/gourieff/sd-webui-reactor"
-    "https://github.com/Bing-su/adetailer"
+    #"https://github.com/gourieff/sd-webui-reactor"
+    #"https://github.com/Bing-su/adetailer"
 )
 
 CHECKPOINT_MODELS=(
-    "https://huggingface.co/lllyasviel/flux1-dev-bnb-nf4/resolve/main/flux1-dev-bnb-nf4-v2.safetensors"
+    #"https://huggingface.co/lllyasviel/flux1-dev-bnb-nf4/resolve/main/flux1-dev-bnb-nf4-v2.safetensors"
 )
 
 LORA_MODELS=(
@@ -41,7 +41,7 @@ CLIP_MODELS=(
 )
 
 VAE_MODELS=(
-    "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors"
+
 )
 
 ESRGAN_MODELS=(
@@ -63,13 +63,13 @@ function provisioning_start() {
     source /opt/ai-dock/bin/venv-set.sh webui
 
     # Get licensed models if HF_TOKEN set & valid
-    #if provisioning_has_valid_hf_token; then
-    #    CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors")
-    #    VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors")
-    #else
-    #    CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors")
-    #    VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors")
-    #fi
+    if provisioning_has_valid_hf_token; then
+        CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors")
+        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors")
+    else
+        CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors")
+        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors")
+    fi
 
     DISK_GB_AVAILABLE=$(($(df --output=avail -m "${WORKSPACE}" | tail -n1) / 1000))
     DISK_GB_USED=$(($(df --output=used -m "${WORKSPACE}" | tail -n1) / 1000))
