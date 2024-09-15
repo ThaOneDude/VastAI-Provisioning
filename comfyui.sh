@@ -16,15 +16,30 @@ APT_PACKAGES=(
 PIP_PACKAGES=(
     #"package-1"
     #"package-2"
+    "onnxruntime"
+    "onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/"
+    "insightface"
+       
+
 )
 
 NODES=(
     "https://github.com/ltdrdata/ComfyUI-Manager"
     "https://github.com/cubiq/ComfyUI_essentials"
-    "https://github.com/BlafKing/sd-civitai-browser-plus"
+    "https://github.com/X-T-E-R/ComfyUI-EasyCivitai-XTNodes"
+    "https://github.com/civitai/civitai_comfy_nodes"
+    "https://github.com/thebill2001/comfyui-upscale-by-model"
+    "https://github.com/SeargeDP/SeargeSDXL"
+    "https://github.com/Gourieff/comfyui-reactor-node"
+    "https://github.com/shiimizu/ComfyUI-PhotoMaker-Plus"
+    
 )
 
 CHECKPOINT_MODELS=(
+    "https://civitai.com/api/download/models/755618?type=Model&format=SafeTensor&size=full&fp=fp16"
+    "https://civitai.com/api/download/models/479579?type=Model&format=SafeTensor&size=full&fp=bf16"
+    "https://civitai.com/api/download/models/714889?type=Model&format=SafeTensor&size=pruned&fp=fp16"
+    "https://civitai.com/api/download/models/160240?type=Model&format=SafeTensor"
 )
 
 UNET_MODELS=(
@@ -36,7 +51,7 @@ LORA_MODELS=(
 )
 
 VAE_MODELS=(
-
+    "https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl.vae.safetensors"
 )
 
 ESRGAN_MODELS=(
