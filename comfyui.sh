@@ -40,6 +40,7 @@ CHECKPOINT_MODELS=(
     "https://civitai.com/api/download/models/479579?type=Model&format=SafeTensor&size=full&fp=bf16"
     #"https://civitai.com/api/download/models/714889?type=Model&format=SafeTensor&size=pruned&fp=fp16"
     "https://civitai.com/api/download/models/160240?type=Model&format=SafeTensor"
+    "https://civitai.com/api/download/models/157315?type=Model&format=SafeTensor&size=pruned&fp=fp16"
 )
 
 UNET_MODELS=(
