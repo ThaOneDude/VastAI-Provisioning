@@ -18,7 +18,7 @@ PIP_PACKAGES=(
     #"package-2"
     "onnxruntime"
     "onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/"
-    #"insightface"
+    "insightface"
        
 
 )
