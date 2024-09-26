@@ -7,7 +7,7 @@
 ### Edit the following arrays to suit your workflow - values must be quoted and separated by newlines or spaces.
 ### If you specify gated models you'll need to set environment variables HF_TOKEN and/orf CIVITAI_TOKEN
 
-DISK_GB_REQUIRED=80
+DISK_GB_REQUIRED=88
 
 APT_PACKAGES=(
     #"package-1"
@@ -15,20 +15,24 @@ APT_PACKAGES=(
 )
 
 PIP_PACKAGES=(
+    "onnxruntime"
+    "onnxruntime-gpu"
+    "insightface"
     
 )
 
 EXTENSIONS=(
-    #"https://github.com/adieyal/sd-dynamic-prompts"
-    #"https://github.com/ototadana/sd-face-editor"
-    #"https://github.com/AlUlkesh/stable-diffusion-webui-images-browser"
     "https://github.com/BlafKing/sd-civitai-browser-plus"
-    #"https://github.com/gourieff/sd-webui-reactor"
-    #"https://github.com/Bing-su/adetailer"
+    "https://github.com/adieyal/sd-dynamic-prompts"
+    "https://github.com/gourieff/sd-webui-reactor"
+    "https://github.com/Bing-su/adetailer"
+    "https://github.com/ototadana/sd-face-editor"
+    "https://github.com/AlUlkesh/stable-diffusion-webui-images-browser"
+    "https://github.com/Coyote-A/ultimate-upscale-for-automatic1111"
+    "https://github.com/hako-mikan/sd-webui-regional-prompter"
 )
 
 CHECKPOINT_MODELS=(
-    #"https://huggingface.co/lllyasviel/flux1-dev-bnb-nf4/resolve/main/flux1-dev-bnb-nf4-v2.safetensors"
 )
 
 LORA_MODELS=(
@@ -41,7 +45,6 @@ CLIP_MODELS=(
 )
 
 VAE_MODELS=(
-
 )
 
 ESRGAN_MODELS=(
