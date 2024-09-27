@@ -14,33 +14,26 @@ APT_PACKAGES=(
 )
 
 PIP_PACKAGES=(
-    #"package-1"
-    #"package-2"
-    "onnxruntime"
-    "onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/"
-    "insightface"
+    #"onnxruntime"
+    #"onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/"
+    #"insightface"
        
 
 )
 
 NODES=(
     "https://github.com/ltdrdata/ComfyUI-Manager"
+    "https://github.com/hayden-fr/comfyui-model-manager"
     "https://github.com/cubiq/ComfyUI_essentials"
-    "https://github.com/X-T-E-R/ComfyUI-EasyCivitai-XTNodes"
-    "https://github.com/civitai/civitai_comfy_nodes"
-    "https://github.com/thebill2001/comfyui-upscale-by-model"
-    #"https://github.com/SeargeDP/SeargeSDXL"
-    #"https://github.com/Gourieff/comfyui-reactor-node"
-    #"https://github.com/shiimizu/ComfyUI-PhotoMaker-Plus"
-    
+    "https://github.com/thebill2001/comfyui-upscale-by-model"    
 )
 
 CHECKPOINT_MODELS=(
     #"https://civitai.com/api/download/models/755618?type=Model&format=SafeTensor&size=full&fp=fp16"
-    "https://civitai.com/api/download/models/479579?type=Model&format=SafeTensor&size=full&fp=bf16"
+    #"https://civitai.com/api/download/models/479579?type=Model&format=SafeTensor&size=full&fp=bf16"
     #"https://civitai.com/api/download/models/714889?type=Model&format=SafeTensor&size=pruned&fp=fp16"
-    "https://civitai.com/api/download/models/160240?type=Model&format=SafeTensor"
-    "https://civitai.com/api/download/models/157315?type=Model&format=SafeTensor&size=pruned&fp=fp16"
+    #"https://civitai.com/api/download/models/160240?type=Model&format=SafeTensor"
+    #"https://civitai.com/api/download/models/157315?type=Model&format=SafeTensor&size=pruned&fp=fp16"
 )
 
 UNET_MODELS=(
@@ -75,11 +68,11 @@ function provisioning_start() {
     
     # Get licensed models if HF_TOKEN set & valid
     if provisioning_has_valid_hf_token; then
-        CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors")
-        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors")
+        #CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors")
+        #VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors")
     else
-        CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors")
-        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors")
+        #CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors")
+        #VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors")
     fi
     
     provisioning_print_header
