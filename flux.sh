@@ -1,4 +1,4 @@
-#!/bin/bash
+/#!/binbash
 # This file will be sourced in init.sh
 # Namespace functions with provisioning_
 
@@ -18,36 +18,65 @@ PIP_PACKAGES=(
     "onnxruntime"
     "onnxruntime-gpu"
     "insightface"
-    
 )
 
 EXTENSIONS=(
-    "https://github.com/gourieff/sd-webui-reactor"
-    "https://github.com/Bing-su/adetailer"
+    "https://github.com/Mikubill/sd-webui-controlnet"
+    "https://github.com/adieyal/sd-dynamic-prompts"
+    "https://github.com/ototadana/sd-face-editor"
     "https://github.com/AlUlkesh/stable-diffusion-webui-images-browser"
+    "https://github.com/Coyote-A/ultimate-upscale-for-automatic1111"
+    "https://github.com/Gourieff/sd-webui-reactor"
+    "https://github.com/Bing-su/adetailer"
     "https://github.com/BlafKing/sd-civitai-browser-plus"
+    #"https://github.com/deforum-art/sd-webui-deforum"
+    #"https://github.com/hako-mikan/sd-webui-regional-prompter"
+    
 )
 
 CHECKPOINT_MODELS=(
+    #"https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt"
+    #"https://huggingface.co/stabilityai/stable-diffusion-2-1/resolve/main/v2-1_768-ema-pruned.ckpt"
+    #"https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors"
+    #"https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors"
 )
 
 LORA_MODELS=(
     #"https://civitai.com/api/download/models/16576"
 )
 
-CLIP_MODELS=(
-    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
-    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
-)
-
 VAE_MODELS=(
+    #"https://huggingface.co/stabilityai/sd-vae-ft-ema-original/resolve/main/vae-ft-ema-560000-ema-pruned.safetensors"
+    #"https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors"
+    "https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors"
 )
 
 ESRGAN_MODELS=(
-    
+    #"https://huggingface.co/ai-forever/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth"
+    #"https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth"
+    #"https://huggingface.co/Akumetsu971/SD_Anime_Futuristic_Armor/resolve/main/4x_NMKD-Siax_200k.pth"
 )
 
 CONTROLNET_MODELS=(
+    "https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/diffusers_xl_canny_mid.safetensors"
+    "https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/diffusers_xl_depth_mid.safetensors?download"
+    "https://huggingface.co/lllyasviel/sd_control_collection/resolve/main/t2i-adapter_diffusers_xl_openpose.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_canny-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_depth-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_hed-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_mlsd-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_normal-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_openpose-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_scribble-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_seg-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_canny-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_color-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_depth-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_keypose-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_openpose-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_seg-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_sketch-fp16.safetensors"
+    #"https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_style-fp16.safetensors"
 )
 
 
@@ -60,15 +89,6 @@ function provisioning_start() {
     fi
     source /opt/ai-dock/etc/environment.sh
     source /opt/ai-dock/bin/venv-set.sh webui
-
-    # Get licensed models if HF_TOKEN set & valid
-    if provisioning_has_valid_hf_token; then
-        CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors")
-        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors")
-    else
-        CHECKPOINT_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors")
-        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors")
-    fi
 
     DISK_GB_AVAILABLE=$(($(df --output=avail -m "${WORKSPACE}" | tail -n1) / 1000))
     DISK_GB_USED=$(($(df --output=used -m "${WORKSPACE}" | tail -n1) / 1000))
@@ -92,30 +112,34 @@ function provisioning_start() {
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
-    provisioning_get_models \
-        "${WORKSPACE}/storage/stable_diffusion/models/clip" \
-        "${CLIP_MODELS[@]}"
      
     PLATFORM_ARGS=""
     if [[ $XPU_TARGET = "CPU" ]]; then
         PLATFORM_ARGS="--use-cpu all --skip-torch-cuda-test --no-half"
     fi
     PROVISIONING_ARGS="--skip-python-version-check --no-download-sd-model --do-not-download-clip --port 11404 --exit"
-    ARGS_COMBINED="${PLATFORM_ARGS} $(cat /etc/forge_args.conf) ${PROVISIONING_ARGS}"
+    ARGS_COMBINED="${PLATFORM_ARGS} $(cat /etc/a1111_webui_flags.conf) ${PROVISIONING_ARGS}"
     
     # Start and exit because webui will probably require a restart
-    cd /opt/stable-diffusion-webui-forge
-        source "$FORGE_VENV/bin/activate"
+    cd /opt/stable-diffusion-webui
+    if [[ -z $MAMBA_BASE ]]; then
+        source "$WEBUI_VENV/bin/activate"
         LD_PRELOAD=libtcmalloc.so python launch.py \
             ${ARGS_COMBINED}
         deactivate
-
-
+    else 
+        micromamba run -n webui -e LD_PRELOAD=libtcmalloc.so python launch.py \
+            ${ARGS_COMBINED}
+    fi
     provisioning_print_end
 }
 
 function pip_install() {
-    "$FORGE_VENV_PIP" install --no-cache-dir "$@"
+    if [[ -z $MAMBA_BASE ]]; then
+            "$WEBUI_VENV_PIP" install --no-cache-dir "$@"
+        else
+            micromamba run -n webui pip install --no-cache-dir "$@"
+        fi
 }
 
 function provisioning_get_apt_packages() {
@@ -133,7 +157,7 @@ function provisioning_get_pip_packages() {
 function provisioning_get_extensions() {
     for repo in "${EXTENSIONS[@]}"; do
         dir="${repo##*/}"
-        path="/opt/stable-diffusion-webui-forge/extensions/${dir}"
+        path="/opt/stable-diffusion-webui/extensions/${dir}"
         if [[ -d $path ]]; then
             # Pull only if AUTO_UPDATE
             if [[ ${AUTO_UPDATE,,} == "true" ]]; then
@@ -178,78 +202,23 @@ function provisioning_print_end() {
     printf "\nProvisioning complete:  Web UI will start now\n\n"
 }
 
-function provisioning_has_valid_hf_token() {
-    [[ -n "$HF_TOKEN" ]] || return 1
-    url="https://huggingface.co/api/whoami-v2"
 
-    response=$(curl -o /dev/null -s -w "%{http_code}" -X GET "$url" \
-        -H "Authorization: Bearer $HF_TOKEN" \
-        -H "Content-Type: application/json")
-
-    # Check if the token is valid
-    if [ "$response" -eq 200 ]; then
-        return 0
-    else
-        return 1
-    fi
-}
-
-function provisioning_has_valid_civitai_token() {
-    [[ -n "$CIVITAI_TOKEN" ]] || return 1
-    url="https://civitai.com/api/v1/models?hidden=1&limit=1"
-
-    response=$(curl -o /dev/null -s -w "%{http_code}" -X GET "$url" \
-        -H "Authorization: Bearer $CIVITAI_TOKEN" \
-        -H "Content-Type: application/json")
-
-    # Check if the token is valid
-    if [ "$response" -eq 200 ]; then
-        return 0
-    else
-        return 1
-    fi
-}
-
+# Download from $1 URL to $2 file path
 function provisioning_download() {
-    local url=$1
-    local output_dir=$2
-    local auth_token=""
     if [[ -n $HF_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
         auth_token="$HF_TOKEN"
     elif 
         [[ -n $CIVITAI_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
         auth_token="$CIVITAI_TOKEN"
     fi
-    
-     # Build the curl command as an array
-    local cmd=("curl" "-L" "-H" "Content-Type: application/json")
-    if [[ -n $auth_token ]]; then
-        cmd+=("-H" "Authorization: Bearer $auth_token")
+    if [[ -n $auth_token ]];then
+        wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
+    else
+        wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
     fi
-    cmd+=("$url" "--create-dirs" "--output-dir" "$output_dir" "-O" "-J" "--progress-bar")
+}
 
-    # Initial percentage
-    local last_percentage=0
-    local current_percentage=0
-    local current_int=0
-
-    # Use curl to download the file and process the output
-    "${cmd[@]}" 2>&1 |
-    while IFS= read -d $'\r' -r p; do
-        # Extract the percentage from the progress bar output
-        if [[ $p =~ ([0-9]+(\.[0-9]+)?)% ]]; then
-            current_percentage=${BASH_REMATCH[1]}
-
-            # Extract the integer part of the percentage
-            current_int=${current_percentage%.*}
-
-            # Print the percentage only if it has increased by at least 5%
-            if [[ $current_int -lt 100 ]] && (( current_int >= last_percentage + 5 )); then
-                echo "Downloading $url (${current_percentage}%)..."
-                last_percentage=$current_int
-            fi
-        fi
-    done
+provisioning_start
 }
 
 provisioning_start
